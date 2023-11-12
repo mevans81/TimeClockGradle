@@ -1,0 +1,19 @@
+11,   ,NEO,      ,Front Left Drive Motor
+21,   ,NEO,      ,Front Left Turn Motor
+31,   ,Encoder,  ,Front Left Absolute Encoder
+12,   ,NEO,      ,Front Right Drive Motor
+22,   ,NEO,      ,Front Right Turn Motor
+32,   ,Encoder,  ,Front Right Absolute Encoder
+13,   ,NEO,      ,Back Right Drive Motor
+23,   ,NEO,      ,Back Right Turn Motor
+33,   ,Encoder,  ,Back Right Absolute Encoder
+14,   ,NEO,      ,Back Left Drive Motor
+24,   ,NEO,      ,Back Left Turn Motor
+34,   ,Encoder,  ,Back Left Absolute Encoder
+50,   ,NEO 550,  ,Left Elbow Motor
+51,   ,NEO 550,  ,Right Elbow Motor
+30,   ,NEO 550,  ,Left Shoulder Motor
+31,   ,NEO 550,  ,Right Shoulder Motor
+60,   ,NEO 550,  ,Gripper Motor
+
+
