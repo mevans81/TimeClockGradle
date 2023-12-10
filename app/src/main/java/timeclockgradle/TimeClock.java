@@ -1,6 +1,8 @@
 package timeclockgradle;
 
 import java.util.Calendar;
+import java.time.Duration;
+import java.time.format.DateTimeFormatter;  
 
 import javafx.application.Platform;
 import javafx.geometry.HorizontalDirection;
@@ -8,6 +10,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -23,11 +27,11 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import javafx.geometry.Bounds;
-import javafx.util.Duration;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
-import javafx.application.Application;
+import javafx.application.Application; 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -38,6 +42,8 @@ import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -101,7 +107,7 @@ public class TimeClock extends Application {
         ImageView FirstLogo = new ImageView(firstLogo);
         FirstLogo.setX(20);
         FirstLogo.setFitWidth(150);
-        FirstLogo.setY(20);
+        FirstLogo.setY(40);
         FirstLogo.setPreserveRatio(true);
 
         ImageView PRLogo = new ImageView(prLogo);
@@ -120,8 +126,35 @@ public class TimeClock extends Application {
         TempClock.setScaleX(1.0);
         TempClock.setScaleY(1.0);
 
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("EEEE - MMM d, yyyy"); // H:mm:ss");  
+            LocalDateTime now = LocalDateTime.now();  
+ 
+            LocalDateTime start = LocalDateTime.of(2023, 11, 4, 4, 35);
+
+         //   System.out.println(dtf.format(now));  
+
+            Duration dur = Duration.between(start, now);
+        
+            String result = String.format("%d:%02d", dur.toHours(), dur.toMinutesPart());
+            System.out.println(result);
+     double timeWorked = (dur.toMinutes()/60.0);
+            System.out.println(timeWorked);
+
+    
+
+        Text Date1 = new Text();
+
+Date1.setX(20);
+Date1.setY(25);
+Date1.setText(now.format(dtf));
+Date1.setFont(Font.font ("Verdana",FontWeight.BOLD, 30));
+
+
+        canvas.getChildren().add(Date1);
         canvas.setStyle("-fx-background-color: white;");
         canvas.getChildren().add(TempClock);
+
 
 
         canvas.getChildren().add(FirstLogo);

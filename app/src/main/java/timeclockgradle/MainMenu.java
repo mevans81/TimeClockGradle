@@ -1,15 +1,21 @@
 package timeclockgradle;
 
+import java.io.IOException;
+import java.net.URL;
+
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
-import java.time.LocalDate;
 
 public class MainMenu extends Application {
 
@@ -18,6 +24,9 @@ public class MainMenu extends Application {
     public Dashboard1 dashboard1 = new Dashboard1();
     public Dashboard2 dashboard2 = new Dashboard2();
     public Dashboard3 dashboard3 = new Dashboard3();
+    public LogInOut logInOut = new LogInOut();
+    
+
 
     // launch the application 
     public void start(Stage s) {
@@ -27,8 +36,6 @@ public class MainMenu extends Application {
         // set title for the stage 
         s.setTitle("Team 2028 TimeClock");
 
-
-
         Menu fileMenu = new Menu("_File");
         MenuItem openItem = new MenuItem("_Open");
         MenuItem saveItem = new MenuItem("Save");
@@ -37,11 +44,12 @@ public class MainMenu extends Application {
 
         Menu testMenu = new Menu("_Test Routines");
         MenuItem sleepItem = new MenuItem("_Sleep");
-        MenuItem loginItem = new MenuItem("_Log In/Out");
+        MenuItem mainScreenItem = new MenuItem("_Main Screen");
         MenuItem dashboard1Item = new MenuItem("_Dashboard1");
         MenuItem dashboard2Item = new MenuItem("_Dashboard2"); 
-        MenuItem dashboard3Item = new MenuItem("_Dashboard3"); 
-        testMenu.getItems().addAll(sleepItem, loginItem, dashboard1Item, dashboard2Item, dashboard3Item);
+        MenuItem dashboard3Item = new MenuItem("_Dashboard3");
+        MenuItem timeStamptItem = new MenuItem("_Time Stamp");
+        testMenu.getItems().addAll(sleepItem, mainScreenItem, dashboard1Item, dashboard2Item, dashboard3Item, timeStamptItem);
 
         Menu editMenu = new Menu("Edit");
         MenuItem cutItem = new MenuItem("Cut");
@@ -73,7 +81,7 @@ public class MainMenu extends Application {
         };
 
 
-        EventHandler < ActionEvent > loginevent = new EventHandler < ActionEvent > () {
+        EventHandler < ActionEvent > mainScreenevent = new EventHandler < ActionEvent > () {
             public void handle(ActionEvent e) {
                 timeclock.start(s);
             }
@@ -99,17 +107,31 @@ public class MainMenu extends Application {
         };
 
 
+        EventHandler < ActionEvent > timeStampevent = new EventHandler < ActionEvent > () {
+            public void handle(ActionEvent e) {
+                logInOut.start(s);
+                
+            }
+        };
+
+
         // add event 
         aboutItem.setOnAction(aboutevent);
         sleepItem.setOnAction(sleepevent);
-        loginItem.setOnAction(loginevent);
+        mainScreenItem.setOnAction(mainScreenevent);
         dashboard1Item.setOnAction(dashboard1event);
         dashboard2Item.setOnAction(dashboard2event);
         dashboard3Item.setOnAction(dashboard3event);
+        timeStamptItem.setOnAction(timeStampevent);
 
         // create a VBox 
         VBox vb = new VBox(menuBar, l);
 
+///////////////////////
+
+
+
+////////////////////////
         // create a scene 
         Scene sc = new Scene(vb, 800, 480);
 

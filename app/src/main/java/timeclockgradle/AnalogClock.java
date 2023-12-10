@@ -239,7 +239,7 @@ private Node hourNumber(int n, int noNumbers) {
         Number.setY(START_RADIUS + 14 - (START_RADIUS*.63 * Math.sin(2*Math.PI/noNumbers * n)));
         if (n == 3) Number.setX(START_RADIUS - 21 + (START_RADIUS*.63 * Math.cos(2*Math.PI/noNumbers * n)));
         if (n == 4) Number.setX(START_RADIUS - 17 + (START_RADIUS*.63 * Math.cos(2*Math.PI/noNumbers * n)));
-        Number.setFont(Font.font ("Verdana",FontWeight.BOLD, 30));
+        Number.setFont(Font.font ("Verdana",FontWeight.BOLD, 26));
 	
         Number.setTextAlignment(TextAlignment.RIGHT);
         return Number;
